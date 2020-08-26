@@ -7,7 +7,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     console.log(requestBody.event);
     if (requestBody.event == 'comment.created') {
       console.log(requestBody.data.object);
-      res.status(200);
+      res.status(200).json(requestBody.data.object);
     } else {
       res.status(200);
     }
