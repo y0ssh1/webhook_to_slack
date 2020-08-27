@@ -21,5 +21,5 @@ export interface SourceService {
 
 export const abstract: SourceService = {
   name: 'abstract',
-  icon: 'https://storage.googleapis.com/telepa-4bfc1.appspot.com/avatar_0.png'
+  icon: 'https://pbs.twimg.com/profile_images/1145737312837545984/MrfJUSa4_400x400.png'
 } 

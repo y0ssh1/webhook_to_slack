@@ -1,7 +1,7 @@
 import { SlackRequestBody } from "../types/slack_request_body";
 import axios from "axios";
 
-export const postToSlack = (body: SlackRequestBody) => {
+export const postToSlack: (body: SlackRequestBody) => Promise<any> = (body) => {
   const data = {
     username: body.type.name,
     icon_url: body.type.icon,
@@ -10,7 +10,7 @@ export const postToSlack = (body: SlackRequestBody) => {
     attachments: {
       fallback: body.text,
       color: "#ffb432",
-      author_link: body.user.link || '',
+      author_link: body.user.link || body.link,
       author_icon: body.user.avatarUrl,
       title: body.title,
       title_link: body.link,
@@ -21,7 +21,7 @@ export const postToSlack = (body: SlackRequestBody) => {
     }
   }
   
-  axios.post('https://slack.com/api/chat.postMessage', data, {
+  return axios.post('https://slack.com/api/chat.postMessage', data, {
     headers: {
       'Authorization': `Bearer ${process.env.SLACK_TOKEN}`,
       'Content-Type': 'application/json',

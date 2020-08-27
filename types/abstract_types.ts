@@ -12,14 +12,18 @@ export type AbstractEventType = 'project.created'
 export interface AbstractWebHookMessage {
   createdAt: string;
   event: AbstractEventType;
-  description: string;
-  data: { object: AbstractWebHookMessageData }
+  data: { object: AbstractWebHookCommentData }
 }
 
-export interface AbstractWebHookMessageData {
-  about: string | null
-  createdAt: string,
-  createdByUser: AbstractUser
+export interface AbstractWebHookCommentData {
+  body: string;
+  createdAt: string;
+  commenter: AbstractUser;
+  fileId: string;
+  branchId: string;
+  projectId: string;
+  layerName: string;
+  commitSha: string;
 }
 
 export interface AbstractUser {
